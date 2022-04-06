@@ -1,23 +1,23 @@
-PSEUDOCÓDIGO (Wollok) MACOWINS
-
 ```java
-class Nueva() {
+PSEUDOCÃ“DIGO (Wollok) MACOWINS
+
+class Nueva {
 	method precio(precioOriginal) = precioOriginal
 }
 
-class Promocion() {
+class Promocion {
 	var descuento
 	method precio(precioOriginal) = precioOriginal - descuento
 }
 
-class Liquidacion() {
+class Liquidacion {
 	method precio(precioOriginal) = precioOriginal * 0.5
 }
 
 class tipoDePrenda {
 	var nombre
 	method precio() = ???
-	/* Ahí iría qué precio corresponde a cada tipo de prenda. Ej: $100 a los sacos, $80 a los pantalones, $200 a las camisas. */
+	/* AhÃ­ irÃ­a quÃ© precio corresponde a cada tipo de prenda. Ej: $100 a los sacos, $80 a los pantalones, $200 a las camisas. */
 }
 
 class Prenda {
@@ -33,15 +33,15 @@ class PrendaVendida {
 
 class Venta {
 	var prendasVendidas = []
-	var tipoDeVenta // Sería new Efectivo() o new Tarjeta()
-	method importeTotal() = tipoDeVenta().precio(self.prendasVendidas().sum({prenda => prenda.cantidad}), prendasVendidas)
+	var tipoDeVenta // SerÃ­a new Efectivo() o new Tarjeta()
+	method importeTotal() = tipoDeVenta().precio(self.prendasVendidas().sum({prenda => prenda.cantidad}), self.prendasVendidas)
 }
 
-class Efectivo() {
+class Efectivo {
 	method precio(precioOriginal, prendasVendidas) = precioOriginal 
 }
 
-class Tarjeta inherits Efectivo() {
+class Tarjeta inherits Efectivo {
 	var cantidadDeCuotas
 	const coeficienteFijo
 	override method precio(precioOriginal, prendasVendidas) = precioOriginal + (cantidadDeCuotas * coeficienteFijo + prendasVendidas().sum({prendaVendida => prendaVendida().prenda().precio * 0.01}))
